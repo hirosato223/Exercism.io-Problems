@@ -18,7 +18,9 @@ class Rational(object):
         return Rational(0, 1) if updatedNumer == 0 else Rational(updatedNumer, updatedDenom)
 
     def __sub__(self, other):
-        pass
+        updatedNumer = self.numer * other.denom - self.denom * other.numer
+        updatedDenom = self.denom * other.denom
+        return Rational(0, 1) if updatedNumer == 0 else Rational(updatedNumer, updatedDenom)
 
     def __mul__(self, other):
         pass

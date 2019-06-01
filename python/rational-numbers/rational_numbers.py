@@ -23,13 +23,17 @@ class Rational(object):
         return Rational(0, 1) if updatedNumer == 0 else Rational(updatedNumer, updatedDenom)
 
     def __mul__(self, other):
-        pass
+        updatedNumer = self.numer * other.numer
+        updatedDenom = self.denom * other.denom
+        return Rational(0, 1) if updatedNumer == 0 else Rational(updatedNumer, updatedDenom)
 
     def __truediv__(self, other):
-        pass
+        updatedNumer = self.numer * other.denom
+        updatedDenom = self.denom * other.numer
+        return Rational(0, 1) if updatedNumer == 0 else Rational(updatedNumer, updatedDenom)
 
     def __abs__(self):
-        pass
+        return Rational(abs(self.numer), abs(self.denom))
 
     def __pow__(self, power):
         pass

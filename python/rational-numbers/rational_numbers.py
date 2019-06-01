@@ -1,6 +1,5 @@
 from __future__ import division
 
-
 class Rational(object):
     def __init__(self, numer, denom):
         reducedFraction = self.reduceFraction(numer, denom)
@@ -41,10 +40,9 @@ class Rational(object):
             return Rational(self.numer ** power, self.denom ** power)
         elif power < 0:
             return Rational(self.numer ** abs(power), self.denom ** abs(power))
-        pass
 
     def __rpow__(self, base):
-        pass
+        return base**(self.numer / self.denom)
     
     def reduceFraction(self, numer, denom):
         if numer == 0:

@@ -3,8 +3,9 @@ from __future__ import division
 
 class Rational(object):
     def __init__(self, numer, denom):
-        self.numer = numer
-        self.denom = denom
+        reducedFraction = self.reduceFraction(numer, denom)
+        self.numer = reducedFraction[0]
+        self.denom = reducedFraction[1]
 
     def __eq__(self, other):
         return self.numer == other.numer and self.denom == other.denom
@@ -44,3 +45,9 @@ class Rational(object):
 
     def __rpow__(self, base):
         pass
+    
+    def reduceFraction(self, numer, denom):
+        if numer == 0:
+            return [0, 1]
+        else:
+            return [numer, denom]

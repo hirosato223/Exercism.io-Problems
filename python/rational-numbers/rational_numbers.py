@@ -51,3 +51,10 @@ class Rational(object):
             return [0, 1]
         else:
             return [numer, denom]
+
+def calculateGcd(val1, val2):
+    for i in range(1, min(val1, val2) + 1):
+        if val1 % i == 0 and val2 % i == 0:
+            gcd = i
+    print(gcd)
+    return gcd

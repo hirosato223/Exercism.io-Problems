@@ -50,11 +50,17 @@ class Rational(object):
         if numer == 0:
             return [0, 1]
         else:
-            return [numer, denom]
+            if numer * denom < 0:
+                numer = -1 * abs(numer)
+                denom = abs(denom)
+            else:
+                numer = abs(numer)
+                denom = abs(denom)
+            gcd = calculateGcd(abs(numer), abs(denom))
+            return [numer//gcd, denom//gcd]
 
 def calculateGcd(val1, val2):
     for i in range(1, min(val1, val2) + 1):
         if val1 % i == 0 and val2 % i == 0:
             gcd = i
-    print(gcd)
     return gcd

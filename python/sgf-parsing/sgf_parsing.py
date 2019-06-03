@@ -1,3 +1,5 @@
+import re
+
 class SgfTree(object):
     def __init__(self, properties=None, children=None):
         self.properties = properties or {}
@@ -26,8 +28,6 @@ class SgfTree(object):
 
 
 def parse(input_string):
-    if len(input_string) == 0:
-        raise ValueError("Input string cannot be empty!")
-    elif input_string == '()':
-        raise ValueError("Tree must contain at least one node!")
+    if not re.search(r'^\((.+)\)$', input_string):
+        raise ValueError("String must contain tree with 1+ nodes")
     pass

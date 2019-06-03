@@ -27,5 +27,7 @@ class SgfTree(object):
 
 def parse(input_string):
     if len(input_string) == 0:
-        raise ValueError("Input string cannot be empty")
+        raise ValueError("Input string cannot be empty!")
+    elif input_string == '()':
+        raise ValueError("Tree must contain at least one node!")
     pass

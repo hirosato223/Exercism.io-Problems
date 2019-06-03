@@ -28,6 +28,7 @@ class SgfTree(object):
 
 
 def parse(input_string):
-    if not re.search(r'^\((.+)\)$', input_string):
+    if not re.search(r'^\(;(.*)\)$', input_string):
         raise ValueError("String must contain tree with 1+ nodes")
-    pass
+    tree = SgfTree()
+    return tree

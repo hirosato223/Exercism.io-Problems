@@ -32,19 +32,12 @@ def parse(input_string):
         raise ValueError("String must contain tree with 1+ nodes")
     tree = SgfTree()
     remainderString = input_string[2:len(input_string)-1]
-    # print (remainderString)
     currKey = ''
     currVal = []
     generatingValue = False
     for i in range(len(remainderString)):
         currChar = remainderString[i]
-        # print(f'current currChar is:{currChar}')
-        # print(f'currKey is:{currKey}')
-        # print(f'currVal is:{currVal}')
-        # print(f'generatingValue is:{generatingValue}')
-    #     case 1- generatingValue == False (still creating key)
-    # append onto currKey
-        if generatingValue == False and currChar != '[':
+        if generatingValue == False and currChar != '[' and currChar != ';':
             currKey+= currChar
         elif generatingValue == False and currChar == '[':
             if not re.search((r'^[A-Z]+$'), currKey):
@@ -58,25 +51,7 @@ def parse(input_string):
             currKey = ''
             currVal = []
         elif currChar == ';':
-            tree.children = parse(remainderString[i+1:])
-    # print(tree.properties)
-    # if generatingValue == False:
-    #     raise ValueError("Keys must have corresponding value")
+            tree.children = parse(f'({remainderString[i:]})')
     if len(currKey) > 0 and len(currVal) == 0:
         raise ValueError("Keys must have corresponding value")
     return tree
-    
-'''
-
-case 2- opening parentheses
-    raise Valueerror if key is not all caps
-    switch generatingValue to True
-case 3- generating value but not closed paren
-    append to currVal
-case 4- closing paren
-    add key[val] to dict
-    generatingValue - false
-    set currkey, currval to false
-'''
-# input_string = '(;Aa[b])'
-# parse(input_string)

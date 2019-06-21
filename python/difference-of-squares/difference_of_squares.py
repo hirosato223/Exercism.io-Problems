@@ -1,10 +1,16 @@
+import math
+
+
 def square_of_sum(number):
-    pass
+    return math.pow((number * (number + 1)) / 2, 2)
 
 
 def sum_of_squares(number):
-    pass
+    sum = 0
+    for i in range(1, number + 1):
+        sum += math.pow(i, 2)
+    return sum
 
 
 def difference_of_squares(number):
-    pass
+    return square_of_sum(number) - sum_of_squares(number)
